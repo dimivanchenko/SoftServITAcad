@@ -1,32 +1,31 @@
-import sys, os, json
+import os
+import sys
+import json
 
-import_file = open(sys.argv[1])
-users_data = json.load(import_file)
-import_file.close()
-result_file=sys.argv[2]
+file_name = str(sys.argv[1])
+json_file_name = sys.argv[2]
+test_file = sys.argv[3]
 
-
-print("\"id\": "  + "\""+str(users_data.get("id"))+"\",")
-print("\"number\": " + "\""+str(users_data.get("number"))+"\"")
-print("\"committer_name\": "  + "\""+str(users_data.get("committer_name"))+"\",")
-print("\"committer_email\": " + "\""+str(users_data.get("committer_email"))+"\"")
-
-
-jdata={}
-jdata['result']=[]
-jdata['result'].append({
-    'id': str(users_data.get("id")),
-    'number': str(users_data.get("number")),
-    'committer_name':str(users_data.get("committer_name")),
-    'committer_email':str(users_data.get("committer_email"))
-})
-
-with open(sys.argv[2], 'w') as outfile:
-    json.dump(jdata, outfile)
+result = {
+    'id': 0,
+    'number': '0',
+    'committer_name': '',
+    'committer_email': ''
+}
+current_file = open(file_name)
+json_data = json.load(current_file)
+if json_data['matrix'] != 0:
+    if int(json_data['number']) > int(result['number']):
+        result['id'] = json_data['id']
+        result['number'] = json_data['number']
+        result['committer_name'] = json_data['committer_name']
+        result['committer_email'] = json_data['committer_email']
+current_file.close()
 
 
-"""for attempt in users_data['matrix']:
-	if float(users_data.get("id"))>0:
-		print (str(float(users_data.get("id"))))
-	else:
-		print("error")"""
+with open(sys.argv[3], 'w') as outfile:
+    json.dump(result, outfile)
+    
+json_file_descriptor = open(json_file_name, 'w+')
+json_file_descriptor.write(json.JSONEncoder().encode(result))
+json_file_descriptor.close()
