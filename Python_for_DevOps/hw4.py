@@ -1,4 +1,4 @@
-import rpm
+#import rpm
 import sys
 import rpmfile
 
@@ -14,7 +14,7 @@ with rpmfile.open(filename) as rpmf:
 
 # rpm module
 
-filename = sys.argv[1]
+"""filename = sys.argv[1]
 rpm_file = open(filename)
 ts = rpm.TransactionSet()
 package = ts.hdrFromFdno(rpm_file)
@@ -26,3 +26,4 @@ for index in package:
 
 rpm_file.close()
 
+"""

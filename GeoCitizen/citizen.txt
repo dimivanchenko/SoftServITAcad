@@ -1,0 +1,19 @@
+#!/bin/bash
+# pom-file
+sed -i "s/http:\/\/repo.spring.io\/milestone/https:\/\/repo.spring.io\/milestone/g" pom.xml
+sed -i "s/http:\/\/repo.spring.io\/libs-milestone/http:\/\/repo.spring.io\/libs-milestone/g" pom.xml
+# Nexus
+sed -i "s/^<distributionManagement>/<!--<distributionManagement>/g" pom.xml
+sed -i "s/<\/<distributionManagement>$/<\/distributionManagement>-->/g" pom.xml
+#application.properties
+webserip='192.168.1.8'
+dbserip='192.168.1.6'
+ename='test.test@gmail.com'
+epass='testtest'
+grep -rl localhost ~/Geocit134 | grep -vZ README | xargs sed -i 's/localhost/$webserip/g' 
+sed -i "s/postgresql:\/\/$webserip/postgresql:\/\/$dbserip/g" ~/Geocit134/src/main/resources/application.properties
+# Favicon
+sed -i "s/\/scr/\/assert/\.\/src\/main\/webapp\/static\//g" ~/Geocit134/src/main/webapp/index.html
+# email
+sed -i "s/ssgeocitizen@gmail.com/$ename/g" ~/Geocit134/src/main/resources/pplication.properties 
+sed -i "s/=softserve/=$epass/g" ~/Geocit134/src/main/resources/pplication.properties

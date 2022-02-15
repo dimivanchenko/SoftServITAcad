@@ -2,23 +2,22 @@ import sys
 import paramiko
 import os
 
-host_addr = sys.argv[1]
-ssh_port = int(sys.argv[2])
-uname = sys.argv[3]
-path_to_folder = sys.argv[4]
-folder_prefix = sys.argv[5]
-folder_count = int(sys.argv[6])
-folder_mode = int(sys.argv[7])
+#host_addr = sys.argv[1]
+#ssh_port = int(sys.argv[2])
+#uname = sys.argv[3]
+#path_to_folder = sys.argv[4]
+#folder_prefix = sys.argv[5]
+#folder_count = int(sys.argv[6])
+#folder_mode = int(sys.argv[7])
 
-passwd = 'test'
-
-#host_addr = 'IP'
-#ssh_port = 22
-#uname='test'
-#path_to_folder = '/SoftServ/Python'
-#folder_prefix = 'usr'
-#folder_count = 5
-#folder_mode = 551
+passwd = 'admin'
+host_addr = '192.168.1.8'
+ssh_port = 22
+uname='diva'
+path_to_folder = '/SoftServ/Python'
+folder_prefix = 'usr'
+folder_count = 5
+folder_mode = 551
 
 
 print (host_addr)

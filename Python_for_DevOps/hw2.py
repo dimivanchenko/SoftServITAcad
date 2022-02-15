@@ -4,7 +4,7 @@ import json
 
 file_name = str(sys.argv[1])
 json_file_name = sys.argv[2]
-test_file = sys.argv[3]
+#test_file = sys.argv[3]
 
 result = {
     'id': 0,
@@ -23,9 +23,11 @@ if json_data['matrix'] != 0:
 current_file.close()
 
 
-with open(sys.argv[3], 'w') as outfile:
-    json.dump(result, outfile)
+# variant 1
+# with open(sys.argv[3], 'w') as outfile:
+#    json.dump(result, outfile)
     
+# variant 2
 json_file_descriptor = open(json_file_name, 'w+')
 json_file_descriptor.write(json.JSONEncoder().encode(result))
 json_file_descriptor.close()
